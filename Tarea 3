@@ -1,0 +1,77 @@
+using System;
+class program
+{
+    static void Main()
+    {
+        //variables
+        int cantidadBoletos;
+        int tipoViaje;
+        double precioUnitario = 0;
+        double importeBoletos;
+        double descuento = 0;
+        double importeDescuento;
+        double tua;
+        double baseIVA;
+        double iva;
+        double total;
+
+        //entrada de los datos 
+        Console.WriteLine("ingrese el numero de boletos: ");
+        cantidadBoletos = int.Parse(Console.ReadLine());
+
+        Console.Write("Tipo de viaje (1=sencillo, 2=redondo): ");
+        tipoViaje = int.Parse(Console.ReadLine());
+
+        //Determinar el precio
+        if (tipoViaje == 1)
+
+        {
+            precioUnitario = 1100;
+        }
+        else if (tipoViaje == 2)
+        {
+            precioUnitario = 2000;
+        }
+        else
+        {
+            Console.WriteLine("Tipo de viaje invalido");
+            return;
+        }
+
+
+        //calcular importe de boletos
+        importeBoletos = cantidadBoletos * precioUnitario;
+
+
+        //aplicar descuento si son 3 o mas redondos
+        if (tipoViaje == 2 && cantidadBoletos >= 3)
+
+        {
+            descuento = importeBoletos * 0.20;
+        }
+
+        //calcular los impuestos
+        importeDescuento = importeBoletos - descuento;
+
+        tua = importeDescuento * 0.12;
+        baseIVA = importeDescuento + tua;
+        iva = baseIVA * 0.16;
+        total = baseIVA + iva;
+
+
+        //mostrar los resultados 
+        Console.WriteLine("\n_Resultados_");
+        Console.WriteLine("numero de boletos" + cantidadBoletos);
+        Console.WriteLine("precios unitarios: $" + precioUnitario);
+        Console.WriteLine("importe de boletos: $" + importeBoletos);
+        Console.WriteLine("descuento: " + descuento);
+        Console.WriteLine("importe con el descuento: " + importeDescuento);
+        Console.WriteLine("tarifa de uso del areopuerto (12%): " + tua);
+        Console.WriteLine("base para IVA: $" + baseIVA);
+        Console.WriteLine("iva (16%): $" + iva);
+        Console.WriteLine("Total que se debe de pagar: $ " + total);
+
+
+        Console.ReadKey();
+    }
+}
