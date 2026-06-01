@@ -1,0 +1,83 @@
+using System;
+
+class MascotaVirtual
+{
+    //atributos privados
+    private string nombre;
+    private int hambre;
+    private int felicidad;
+
+    //constructor
+    public MascotaVirtual(string nombre)
+    {
+        if (string.IsNullOrWhiteSpace(nombre))
+        {
+            this.nombre = "Mascota";
+        }
+        else
+        {
+            this.nombre = nombre;
+        }
+
+        hambre = 50;
+        felicidad = 50;
+    }
+
+    // metodos público
+
+    public void alimentar()
+    {
+        hambre -= 20;
+        hambre = validarRango(hambre);
+    }
+
+    public void jugar()
+    {
+        felicidad += 15;
+        hambre += 5;
+
+        felicidad = validarRango(felicidad);
+        hambre = validarRango(hambre);
+    }
+
+    public void mostrarEstado()
+    {
+        Console.WriteLine("Nombre: " + nombre);
+        Console.WriteLine("Hambre: " + hambre);
+        Console.WriteLine("Felicidad: " + felicidad);
+    }
+
+    public bool estaSaludable()
+    {
+        return hambre < 70 && felicidad > 30;
+    }
+
+    // metodo privado
+    private int validarRango(int valor)
+    {
+        if (valor < 0) return 0;
+        if (valor > 100) return 100;
+        return valor;
+    }
+}
+class Program
+{
+    static void Main(string[] args)
+    {
+        MascotaVirtual mascota = new MascotaVirtual("Bilbo Baggins");
+        Console.WriteLine("===================================================");
+
+        mascota.mostrarEstado();
+        Console.WriteLine("===================================================");
+
+        mascota.jugar();
+        mascota.mostrarEstado();
+        Console.WriteLine("===================================================");
+
+        mascota.alimentar();
+        mascota.mostrarEstado();
+        Console.WriteLine("===================================================");
+
+        Console.WriteLine("¿Está saludable? " + mascota.estaSaludable());
+    }
+}
