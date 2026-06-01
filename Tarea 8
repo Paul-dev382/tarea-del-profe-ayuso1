@@ -1,0 +1,393 @@
+//codigo 1 
+using System; 
+namespace Banco 
+{ 
+    // Clase CuentaBancaria 
+    class CuentaBancaria 
+    { 
+        // Atributos 
+        public string titular; 
+        public int numeroCuenta; 
+        public double saldo; 
+        // Método para mostrar información 
+        public void MostrarDatos() 
+        { 
+            Console.WriteLine("Titular: " + titular); 
+            Console.WriteLine("Número de cuenta: " + numeroCuenta); 
+            Console.WriteLine("Saldo: $" + saldo); 
+        } 
+
+        // Método para depositar dinero 
+        public void Depositar(double cantidad) 
+        { 
+            saldo += cantidad; 
+            Console.WriteLine("Depósito realizado. Nuevo saldo: $" + saldo); 
+        } 
+
+        // Método para retirar dinero 
+        public void Retirar(double cantidad) 
+        { 
+            if (cantidad <= saldo) 
+            { 
+                saldo -= cantidad; 
+                Console.WriteLine("Retiro realizado. Nuevo saldo: $" + saldo); 
+            } 
+            else 
+            { 
+                Console.WriteLine("Saldo insuficiente."); 
+            } 
+        } 
+    } 
+  
+    class Program 
+    { 
+        static void Main(string[] args) 
+        { 
+
+            Console.WriteLine("====================================="); 
+
+            // Crear objeto de la clase CuentaBancaria 
+            CuentaBancaria cuenta1 = new CuentaBancaria(); 
+
+            // Asignar valores a los atributos 
+            cuenta1.titular = "Juan Perez"; 
+            cuenta1.numeroCuenta = 12345; 
+            cuenta1.saldo = 1000; 
+
+            // Usar los métodos 
+            cuenta1.MostrarDatos(); 
+            cuenta1.Depositar(500); 
+            cuenta1.Retirar(200); 
+
+            Console.WriteLine("====================================="); 
+            //Cuenta 2 
+            CuentaBancaria cuenta2 = new CuentaBancaria(); 
+            cuenta2.titular = "Maria Rodriguez"; 
+            cuenta2.numeroCuenta = 54321; 
+            cuenta2.saldo = 2000; 
+
+            cuenta2.MostrarDatos(); 
+
+            cuenta2.Depositar(300); 
+            cuenta2.Retirar(200); 
+
+            Console.WriteLine("====================================="); 
+            Console.ReadKey(); 
+        } 
+    } 
+} 
+
+
+
+
+
+
+//Codigo 2 
+using System; 
+namespace AutomovilApp 
+{ 
+    // Clase Automovil 
+    class Automovil
+    { 
+        // Atributos 
+        public string marca; 
+        public string modelo; 
+        public int año; 
+        public double velocidad; 
+
+        // Método para mostrar datos 
+        public void MostrarDatos() 
+        { 
+            Console.WriteLine("Marca: " + marca); 
+            Console.WriteLine("Modelo: " + modelo); 
+            Console.WriteLine("Año: " + año); 
+            Console.WriteLine("Velocidad: " + velocidad + " km/h"); 
+        } 
+
+        // Método para acelerar 
+        public void Acelerar(double incremento) 
+        { 
+            velocidad += incremento; 
+            Console.WriteLine("El automóvil aceleró. Velocidad actual: " + velocidad + " km/h"); 
+        } 
+
+        // Método para frenar 
+        public void Frenar(double decremento) 
+        { 
+            velocidad -= decremento; 
+            if (velocidad < 0) 
+            { 
+                velocidad = 0; 
+            } 
+            Console.WriteLine("El automóvil frenó. Velocidad actual: " + velocidad + " km/h"); 
+        } 
+    } 
+
+    class Program 
+    { 
+        static void Main(string[] args) 
+        { 
+            Console.WriteLine("=============================================="); 
+
+            // Crear objeto de la clase Automovil 
+            Automovil auto1 = new Automovil(); 
+
+            // Asignar valores 
+            auto1.marca = "Toyota"; 
+            auto1.modelo = "Corolla"; 
+            auto1.año = 2022; 
+            auto1.velocidad = 0; 
+
+            // Usar métodos 
+            auto1.MostrarDatos(); 
+            auto1.Acelerar(60); 
+            auto1.Frenar(20); 
+
+            Console.WriteLine("=============================================="); 
+            // Auto 2 
+            Automovil auto2 = new Automovil(); 
+            auto2.marca = "DeLorean Motor Company"; 
+            auto2.modelo = " DMC-12"; 
+            auto2.año = 1981; 
+            auto2.velocidad = 0; 
+
+            auto2.MostrarDatos(); 
+            auto2.Acelerar(88); 
+            auto2.Frenar(78); 
+            Console.WriteLine("=============================================="); 
+            Console.ReadKey(); 
+        } 
+    } 
+} 
+
+
+
+
+
+//codigo 3 
+
+using System; 
+
+ namespace Escuela 
+{ 
+    // Clase Estudiante 
+    class Estudiante 
+    { 
+        // Atributos 
+        public string nombre; 
+        public int edad; 
+        public string carrera; 
+        public double promedio; 
+
+        // Método para mostrar datos 
+        public void MostrarDatos() 
+        { 
+            Console.WriteLine("Nombre: " + nombre); 
+            Console.WriteLine("Edad: " + edad); 
+            Console.WriteLine("Carrera: " + carrera); 
+            Console.WriteLine("Promedio: " + promedio); 
+        } 
+
+        // Método para verificar si aprobó 
+        public void VerificarAprobado() 
+        { 
+            if (promedio >= 70) 
+            { 
+                Console.WriteLine("El estudiante aprobó."); 
+            } 
+            else 
+            { 
+                Console.WriteLine("El estudiante reprobó."); 
+            } 
+        } 
+    } 
+  
+    class Program 
+    { 
+        static void Main(string[] args) 
+        { 
+            Console.WriteLine("===================================="); 
+            // Crear objeto 
+            Estudiante alumno1 = new Estudiante(); 
+
+            // Asignar valores 
+            alumno1.nombre = "Carlos"; 
+            alumno1.edad = 20; 
+            alumno1.carrera = "Ingeniería"; 
+            alumno1.promedio = 85; 
+
+            // Usar métodos 
+            alumno1.MostrarDatos(); 
+            alumno1.VerificarAprobado(); 
+              Console.WriteLine("===================================="); 
+            Estudiante alumno2 = new Estudiante(); 
+
+            alumno2.nombre = "Maria "; 
+            alumno2.edad = 19; 
+            alumno2.carrera = "Lincenciatura"; 
+            alumno2.promedio = 98; 
+
+           alumno2.MostrarDatos();
+
+            alumno2.VerificarAprobado(); 
+            Console.WriteLine("===================================="); 
+             Console.ReadKey(); 
+        } 
+    } 
+} 
+
+
+
+
+
+//codigo 4
+
+using System; 
+namespace Veterinaria 
+{ 
+    // Clase Mascota 
+    class Mascota 
+    { 
+        // Atributos 
+        public string nombre; 
+        public string especie; 
+        public int edad; 
+        public double peso; 
+
+        // Método para mostrar datos 
+        public void MostrarDatos() 
+        { 
+            Console.WriteLine("Nombre: " + nombre); 
+            Console.WriteLine("Especie: " + especie); 
+            Console.WriteLine("Edad: " + edad + " años"); 
+            Console.WriteLine("Peso: " + peso + " kg"); 
+        } 
+
+        // Método para simular que come 
+        public void Comer() 
+        { 
+            Console.WriteLine(nombre + " está comiendo."); 
+        } 
+
+        // Método para simular que duerme 
+        public void Dormir() 
+        { 
+            Console.WriteLine(nombre + " está durmiendo."); 
+        } 
+    } 
+
+    class Program 
+    { 
+        static void Main(string[] args) 
+        { 
+            Console.WriteLine("========================================="); 
+            // Crear objeto 
+            Mascota mascota1 = new Mascota(); 
+
+            // Asignar valores 
+            mascota1.nombre = "Luna"; 
+            mascota1.especie = "Perro"; 
+            mascota1.edad = 3; 
+            mascota1.peso = 8.5; 
+
+            // Usar métodos 
+            mascota1.MostrarDatos(); 
+            mascota1.Comer(); 
+            mascota1.Dormir(); 
+
+            Console.WriteLine("========================================="); 
+
+            Mascota mascota2 = new Mascota(); 
+
+            mascota2.nombre = "Frodo"; 
+            mascota2.especie = "Gato"; 
+            mascota2.edad = 5; 
+            mascota2.peso = 3.5; 
+  
+            mascota2.MostrarDatos(); 
+            mascota2.Comer(); 
+            mascota2.Dormir(); 
+            Console.WriteLine("========================================="); 
+
+            Console.ReadKey(); 
+        } 
+    } 
+} 
+
+
+
+
+
+//codigo 5 
+
+using System; 
+namespace TiendaCelulares 
+{ 
+    // Clase Celular 
+    class Celular 
+    { 
+        // Atributos 
+        public string marca; 
+        public string modelo; 
+        public int almacenamiento; 
+        public int bateria; 
+
+        // Método para mostrar datos 
+        public void MostrarDatos() 
+        { 
+            Console.WriteLine("Marca: " + marca); 
+            Console.WriteLine("Modelo: " + modelo); 
+            Console.WriteLine("Almacenamiento: " + almacenamiento + " GB"); 
+            Console.WriteLine("Batería: " + bateria + "%"); 
+        } 
+
+        // Método para llamar 
+        public void Llamar() 
+        { 
+            Console.WriteLine("Realizando una llamada..."); 
+        } 
+
+        // Método para cargar batería 
+        public void Cargar() 
+        { 
+            bateria = 100; 
+            Console.WriteLine("El celular se ha cargado al 100%"); 
+        } 
+    } 
+
+    class Program 
+    { 
+        static void Main(string[] args) 
+        { 
+            Console.WriteLine("=========================================="); 
+            // Crear objeto 
+            Celular celular1 = new Celular(); 
+
+            // Asignar valores 
+            celular1.marca = "Samsung"; 
+            celular1.modelo = "Galaxy"; 
+            celular1.almacenamiento = 128; 
+            celular1.bateria = 50; 
+
+            // Usar métodos 
+            celular1.MostrarDatos(); 
+            celular1.Llamar(); 
+            celular1.Cargar(); 
+            Console.WriteLine("=========================================="); 
+
+            Celular celular2 = new Celular(); 
+
+            celular2.marca = "Honor"; 
+            celular2.modelo = "X8a pro"; 
+            celular2.almacenamiento = 128; 
+            celular2.bateria = 80; 
+
+            celular2.MostrarDatos(); 
+            celular2.Llamar(); 
+            celular2.Cargar(); 
+            Console.WriteLine("=========================================="); 
+
+            Console.ReadKey(); 
+        } 
+    } 
+} 
