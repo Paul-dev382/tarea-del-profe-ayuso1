@@ -1,0 +1,47 @@
+using System;
+
+namespace Par_e_impar
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            char opcion;
+
+            do
+            {
+                int numero;
+                Console.Write("Introduce un número entero: ");
+
+                // Lectura segura del número
+                while (!int.TryParse(Console.ReadLine(), out numero))
+                {
+                    Console.Write("Entrada inválida. Intenta de nuevo: ");
+                }
+
+                // Verificación
+                if (numero == 0)
+                {
+                    Console.WriteLine("El número es cero (y es par)");
+                }
+                else if (numero % 2 == 0)
+                {
+                    Console.WriteLine("El número es PAR");
+                }
+                else
+                {
+                    Console.WriteLine("El número es IMPAR");
+                }
+
+                // Preguntar si desea continuar
+                Console.Write("¿Deseas analizar otro número? (s/n): ");
+                opcion = Char.ToLower(Console.ReadKey().KeyChar);
+                Console.WriteLine();
+
+            } while (opcion == 's');
+
+            Console.WriteLine("Programa finalizado.");
+
+
+        }
+    }
