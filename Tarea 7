@@ -1,0 +1,94 @@
+using System;
+
+namespace CursoPO
+{
+    internal class Program
+    {
+        static void Header()
+        {
+            Console.WriteLine("Convertir Escalas De Temperatura");
+            Console.WriteLine("*************************************************");
+        }
+        static double c_f(double cel)
+        {
+            return (cel * 1.8) + 3;
+        }
+
+        static double f_c (double far)
+        {
+            return (far - 32) / 1.8;
+        }
+
+        static double c_k (double cel)
+        {
+            return cel + 273.15;
+        }
+
+        static double k_c (double kel)
+        {
+            return kel - 273.15;
+        }
+
+        static void Main(string[] args)
+        {
+            Header();
+            int opcion;
+            double dato;
+            double resultado;
+            do
+            {
+
+                
+                Console.WriteLine("\n -----------------------------------------------");
+                Console.WriteLine("1 - Celcius a Fahrenheit");
+                Console.WriteLine("2 - Fahrenheit a celcius");
+                Console.WriteLine("3 - Celcius a Kelvin");
+                Console.WriteLine("4 - Kelvin a Celcius");
+                Console.WriteLine("5 - Salir");
+                Console.WriteLine("--------------------------------------------------------");
+
+                Console.WriteLine ("Ingrese que escala de medicion desea ser convertido: ");
+
+                opcion = int.Parse(Console.ReadLine());
+                Console.WriteLine ("Ingrese la escala para convertir: ");
+                dato = double.Parse(Console.ReadLine());
+
+                switch (opcion)
+                {
+                    case 1:
+                        resultado = c_f(dato);
+                        Console.WriteLine($"Resultado de la convercion de {dato} c° es: {resultado} f°");
+                        break;
+
+                    case 2:
+                        resultado = f_c(dato);
+                        Console.WriteLine($"Resultado de la convercion de {dato}f° es: {resultado} c°");
+                        break;
+
+                    case 3:
+                        resultado = c_k(dato);
+                        Console.WriteLine($"Resultado de la convercion de {dato} c° es: {resultado} k°");
+                        break;
+
+                    case 4:
+                        resultado = k_c(dato);
+                            Console.WriteLine($"Resultado de la convercion de {dato} k° es: {resultado} c°");
+
+                        break;
+
+                    case 5:
+                        Console.WriteLine("Saliendo del programa...");
+                        break;
+
+                    default:
+                        Console.WriteLine("Opción no válida.");
+                        break;
+                }
+
+            } while (opcion != 5);
+
+            Console.WriteLine("Programa finalizado.");
+            Console.ReadLine();
+        }
+    }
+}
