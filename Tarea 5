@@ -1,0 +1,42 @@
+using System;
+namespace arreglos_bidimencionales
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.Write("Recorrer arreglos bidimencionales");
+            
+            Console.Write("\n---------------------------------");
+           
+
+            int[,] matriz ={ { 20, 35, },
+                              {42,58 } };
+
+            int suma = 0;
+            
+           
+           
+            for (int i = 0; i < matriz.GetLength(0); i++)
+            {
+                for (int j = 0; j < matriz.GetLength(1); j++)
+                {
+                    
+                    Console.Write($"\nciclo actual [{i},{j}] = {matriz[i,j]}");
+                     suma += matriz[i, j];
+                }
+            }
+
+            // Cálculo del promedio
+            double promedio = (double)suma / matriz.Length;
+
+            Console.WriteLine("\nLa suma total es: " + suma);
+            Console.WriteLine("El promedio es: " + promedio);
+
+            Console.ReadKey();
+
+
+
+        }
+    }
+} 
