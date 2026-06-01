@@ -1,0 +1,87 @@
+using System;
+namespace CursoPOO
+{
+    internal class Program
+    {
+        static void Header()
+        {
+            Console.WriteLine("Bienvenido al curso de programación orientada a objetos");
+            Console.WriteLine("--------------------------------------------------------");
+        }
+        static int Sumar(int a, int b)
+        {
+            return a + b;
+        }
+        static int Restar(int a, int b)
+        {
+            return a - b;
+        }
+
+        static int Multiplicar(int a, int b)
+        {
+            return a * b;
+        }
+
+        static double Dividir(int a, int b)
+        {
+            return (double)a / b;
+        }
+
+        static void Main(string[] args)
+        {
+            Header();
+            int opcion;
+            do
+            {
+                Console.WriteLine("\nIngrese el primer número:");
+                int numero1 = Convert.ToInt32(Console.ReadLine());
+
+                Console.WriteLine("Ingrese el segundo número:");
+                int numero2 = Convert.ToInt32(Console.ReadLine());
+
+                Console.WriteLine("\nElige una opción:");
+                Console.WriteLine("1 - Sumar");
+                Console.WriteLine("2 - Restar");
+                Console.WriteLine("3 - Multiplicar");
+                Console.WriteLine("4 - Dividir");
+                Console.WriteLine("5 - Salir");
+
+                opcion = Convert.ToInt32(Console.ReadLine());
+
+                switch (opcion)
+                {
+                    case 1:
+                        Console.WriteLine($"Resultado: {Sumar(numero1, numero2)}");
+                        break;
+
+                    case 2:
+                        Console.WriteLine($"Resultado: {Restar(numero1, numero2)}");
+                        break;
+
+                    case 3:
+                        Console.WriteLine($"Resultado: {Multiplicar(numero1, numero2)}");
+                        break;
+
+                    case 4:
+                        if (numero2 != 0)
+                            Console.WriteLine($"Resultado: {Dividir(numero1, numero2)}");
+                        else
+                            Console.WriteLine("No se puede dividir entre cero.");
+                        break;
+
+                    case 5:
+                        Console.WriteLine("Saliendo del programa...");
+                        break;
+
+                    default:
+                        Console.WriteLine("Opción no válida.");
+                        break;
+                }
+
+            } while (opcion != 5);
+
+            Console.WriteLine("Programa finalizado.");
+            Console.ReadLine();
+        }
+    }
+}
