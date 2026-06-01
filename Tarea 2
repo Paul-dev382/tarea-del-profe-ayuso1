@@ -1,0 +1,84 @@
+using System;
+
+namespace Boleto_de_Avion
+{
+    internal class Program
+    {
+
+        static void Main(string[] args)
+        {
+            // Declaración de variables
+            int numeroBoletos;
+            int tipoViaje;
+            double precioUnitario = 0;
+            double importeBoletos;
+            double descuento = 0;
+            double importeConDescuento;
+            double tua;
+            double baseIVA;
+            double iva;
+            double total;
+
+            // Lectura de datos
+            Console.Write("Ingrese el número de boletos a adquirir: ");
+            numeroBoletos = int.Parse(Console.ReadLine());
+
+            Console.Write("Ingrese el tipo de viaje (1 = Sencillo, 2 = Redondo): ");
+            tipoViaje = int.Parse(Console.ReadLine());
+
+            // Determinar precio unitario
+            if (tipoViaje == 1)
+            {
+                precioUnitario = 1100.00;
+            }
+            else if (tipoViaje == 2)
+            {
+                precioUnitario = 2000.00;
+            }
+            else
+            {
+                Console.WriteLine("Tipo de viaje inválido.");
+                return;
+            }
+
+            // Calcular importe por boletos
+            importeBoletos = numeroBoletos * precioUnitario;
+
+            // Aplicar descuento si son 3 o más boletos redondos
+            if (tipoViaje == 2 && numeroBoletos >= 3)
+            {
+                descuento = importeBoletos * 0.20;
+            }
+
+            // Importe con descuento
+            importeConDescuento = importeBoletos - descuento;
+
+            // Calcular TUA (12%)
+            tua = importeConDescuento * 0.12;
+
+            // Base para IVA
+            baseIVA = importeConDescuento + tua;
+
+            // Calcular IVA (16%)
+            iva = baseIVA * 0.16;
+
+            // Total
+            total = baseIVA + iva;
+
+            // Impresión de resultados
+            Console.WriteLine("\n----- TICKET DE COMPRA -----");
+            Console.WriteLine("Número de boletos: " + numeroBoletos);
+            Console.WriteLine("Importe unitario: $" + precioUnitario.ToString("F2"));
+            Console.WriteLine("Importe por boletos: $" + importeBoletos.ToString("F2"));
+            Console.WriteLine("Importe del descuento: $" + descuento.ToString("F2"));
+            Console.WriteLine("Importe con descuento aplicado: $" + importeConDescuento.ToString("F2"));
+            Console.WriteLine("Importe del impuesto TUA (12%): $" + tua.ToString("F2"));
+            Console.WriteLine("Importe sobre el cual se aplica IVA: $" + baseIVA.ToString("F2"));
+            Console.WriteLine("Importe del IVA (16%): $" + iva.ToString("F2"));
+            Console.WriteLine("Importe total a pagar: $" + total.ToString("F2"));
+
+            Console.ReadKey();
+
+        }
+    }
+}
