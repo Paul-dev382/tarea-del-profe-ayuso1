@@ -1,0 +1,176 @@
+using System;
+
+namespace SistemaEmpleados
+{   ///Clase base
+    abstract class Empleado
+    {
+        public string Nombre { get; set; }
+        public string Puesto { get; set; }
+
+        public Empleado(string nombre, string puesto)
+        {
+            Nombre = nombre;
+            Puesto = puesto;
+        }
+        public abstract double CalcularSueldo();
+        public virtual void MostrarDatos()
+        {
+            Console.WriteLine("Nombre: " + Nombre);
+            Console.WriteLine("Puesto: " + Puesto);
+        }
+    }
+    //Empleado por tiempo
+     class EmpleadoTiempoCompleto : Empleado
+    {
+        public double SueldoMensual { get; set; }
+
+        public EmpleadoTiempoCompleto(string nombre, string puesto, double sueldoMensual)
+            : base(nombre, puesto)
+        {
+            SueldoMensual = sueldoMensual;
+        }
+
+        public override double CalcularSueldo()
+        {
+            return SueldoMensual;
+        }
+    }
+    //Empleado por horas
+    class EmpleadoPorHoras : Empleado
+    {
+        public int HorasTrabajadas { get; set; }
+        public double PagoPorHora { get; set; }
+
+        public EmpleadoPorHoras(string nombre, string puesto, int horasTrabajadas, double pagoPorHora)
+            : base(nombre, puesto)
+        {
+            HorasTrabajadas = horasTrabajadas;
+            PagoPorHora = pagoPorHora;
+        }
+
+        public override double CalcularSueldo()
+        {
+            return HorasTrabajadas * PagoPorHora;
+        }
+    }
+    // Empleado por comision
+    class EmpleadoPorComision : Empleado
+    {
+        public double TotalVentas { get; set; }
+        public double PorcentajeComision { get; set; }
+
+        public EmpleadoPorComision(string nombre, string puesto, double totalVentas, double porcentajeComision)
+            : base(nombre, puesto)
+        {
+            TotalVentas = totalVentas;
+            PorcentajeComision = porcentajeComision;
+        }
+
+        public override double CalcularSueldo()
+        {
+            return TotalVentas * PorcentajeComision;
+        }
+    }
+    //Empleado mixto
+    class EmpleadoMixto : Empleado
+    {
+        public double SueldoBase { get; set; }
+        public double TotalVentas { get; set; }
+        public double PorcentajeComision { get; set; }
+
+        public EmpleadoMixto(string nombre, string puesto, double sueldoBase, double totalVentas, double porcentajeComision)
+            : base(nombre, puesto)
+        {
+            SueldoBase = sueldoBase;
+            TotalVentas = totalVentas;
+            PorcentajeComision = porcentajeComision;
+        }
+        public override double CalcularSueldo()
+        {
+            return SueldoBase + (TotalVentas * PorcentajeComision);
+        }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Empleado empleado = null;
+
+            Console.WriteLine("________________________________________");
+            Console.WriteLine(" SUELDO DE EMPLEADOS DEL KFC ");
+            Console.WriteLine("________________________________________");
+            Console.WriteLine("1. Empleado Tiempo Completo");
+            Console.WriteLine("2. Empleado Por Horas");
+            Console.WriteLine("3. Empleado Por Comision");
+            Console.WriteLine("4. Empleado Mixto");
+            Console.Write("Seleccione una opcion: ");
+
+            int opcion = int.Parse(Console.ReadLine());
+
+            Console.Write("\nIngrese el nombre del empleado: ");
+            string nombre = Console.ReadLine();
+
+            Console.Write("Ingrese el puesto del empleado: ");
+            string puesto = Console.ReadLine();
+
+            switch (opcion)
+            {
+                case 1:
+                    Console.Write("Ingrese el sueldo mensual: ");
+                    double sueldoMensual = double.Parse(Console.ReadLine());
+
+                    empleado = new EmpleadoTiempoCompleto(
+                        nombre, puesto, sueldoMensual);
+                    break;
+
+                case 2:
+                    Console.Write("Ingrese las horas trabajadas: ");
+                    int horas = int.Parse(Console.ReadLine());
+
+                    Console.Write("Ingrese el pago por hora: ");
+                    double pagoHora = double.Parse(Console.ReadLine());
+
+                    empleado = new EmpleadoPorHoras(
+                        nombre, puesto, horas, pagoHora);
+                    break;
+
+                case 3:
+                    Console.Write("Ingrese el total de ventas: ");
+                    double ventas = double.Parse(Console.ReadLine());
+
+                    Console.Write("Ingrese el porcentaje de comision (ejemplo 0.05): ");
+                    double comision = double.Parse(Console.ReadLine());
+
+                    empleado = new EmpleadoPorComision(
+                        nombre, puesto, ventas, comision);
+                    break;
+
+                case 4:
+                    Console.Write("Ingrese el sueldo base: ");
+                    double sueldoBase = double.Parse(Console.ReadLine());
+
+                    Console.Write("Ingrese el total de ventas: ");
+                    double ventasMixto = double.Parse(Console.ReadLine());
+
+                    Console.Write("Ingrese el porcentaje de comision (ejemplo 0.05): ");
+                    double comisionMixto = double.Parse(Console.ReadLine());
+
+                    empleado = new EmpleadoMixto(
+                        nombre, puesto, sueldoBase,
+                        ventasMixto, comisionMixto);
+                    break;
+
+                default:
+                    Console.WriteLine("Opcion no valida.");
+                    return;
+            }
+
+            Console.WriteLine("\n===== DATOS DEL EMPLEADO =====");
+            empleado.MostrarDatos();
+            double sueldo = empleado.CalcularSueldo();
+            Console.WriteLine("Sueldo calculado: " + sueldo.ToString("C"));
+            Console.WriteLine("\nPresione cualquier tecla para salir...");
+            Console.ReadKey();
+        }
+    }
+}
