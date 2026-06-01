@@ -1,0 +1,60 @@
+using System;
+class IndiceDEMasaCorporal
+{
+    static void Main(string[] args)
+
+    {
+        //declaracion de variable
+        Double peso, estatura, imc;
+        string estado;
+
+        //entrada de datos
+        Console.Write("ingrese su peso en kilogramos:  ");
+        peso = Convert.ToDouble(Console.ReadLine());
+
+
+        Console.Write(" ingrese su estatura en metros:  ");
+        estatura = Convert.ToDouble(Console.ReadLine());
+
+
+        //Caculo del IMC
+        imc = peso / (estatura * estatura);
+
+        //Determinar el estado nutricional
+        if (imc < 18.5)
+        {
+            estado = "peso bajo";
+        }
+        else if (imc < 25)
+
+
+        {
+            estado = "peso normal";
+        }
+        else if (imc < 30)
+
+        {
+            estado = "sobrepeso";
+        }
+        else if (imc < 40)
+
+
+        {
+            estado = "obesidad";
+        }
+        else
+
+        {
+            estado = "obesidad extrema";
+        }
+
+
+
+        //mostrar resultados 
+        Console.WriteLine("\n Su Indice de Masa Corporal (IMC) es:  " + imc.ToString());
+        Console.WriteLine("Su estado nutricional es:  " + estado );
+
+        Console.ReadKey();
+    }
+}
+
